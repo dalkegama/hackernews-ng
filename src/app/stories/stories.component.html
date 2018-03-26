@@ -1,0 +1,15 @@
+<div class="wrapper">
+  <ul>
+    <li *ngFor="let item of items | slice:0:30">
+      <app-item itemID="{{item}}"></app-item>
+    </li>
+  </ul>
+  <div class="nav">
+    <a href="" class="prev">
+      ‹ Prev
+    </a>
+    <a href="" class="more">
+      More ›
+    </a>
+  </div>
+</div>
