@@ -1,4 +1,6 @@
+
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 import { HackerNewsApiService } from './../services/hackernews-api.service';
 
@@ -8,14 +10,30 @@ import { HackerNewsApiService } from './../services/hackernews-api.service';
   styleUrls: ['./stories.component.scss']
 })
 export class StoriesComponent implements OnInit {
+  typeSub: any;
+  pageSub: any;
   items;
+  storiesType;
+  pageNum: number;
+  listStart: number;
 
-  constructor(private _hackerNewsApiService: HackerNewsApiService) { }
+  constructor(
+    private _hackerNewsApiService: HackerNewsApiService,
+    private route: ActivatedRoute
+  ) { }
 
   ngOnInit() {
-    this._hackerNewsApiService.fetchTopStories()
-      .subscribe(
-      items => this.items = items,
-      error => console.log('error'));
+    this.typeSub = this.route
+      .data
+      .subscribe(data => this.storiesType = (data as any).storiesType);
+
+    this.pageSub = this.route.params.subscribe(params => {
+      this.pageNum = +params['page'] ? +params['page'] : 1;
+      this._hackerNewsApiService.fetchStories(this.storiesType, this.pageNum)
+        .subscribe(
+          items => this.items = items,
+          error => console.log('Error fetching' + this.storiesType + 'stories'),
+          () => this.listStart = ((this.pageNum - 1) * 30) + 1);
+    });
   }
 }

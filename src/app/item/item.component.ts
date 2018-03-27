@@ -7,15 +7,12 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./item.component.scss']
 })
 export class ItemComponent implements OnInit {
-  @Input() itemID: number;
-  item;
+  @Input() item;
 
-  constructor(private _hackerNewsApiService: HackerNewsApiService) { }
+  constructor() { }
 
   ngOnInit() {
-    this._hackerNewsApiService.fetchItem(this.itemID)
-      .subscribe(data => {
-        this.item = data;
-      }, error => console.log(this.itemID + 'wasn\'t loaded'));
+
   }
+
 }
