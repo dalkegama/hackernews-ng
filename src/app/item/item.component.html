@@ -1,26 +1,23 @@
-<div class="item-laptop">
-  <a class="title" [href]="item.url">
-    {{item.title}}
-  </a>
-  <span *ngIf="item.domain" class="domain">({{item.domain}})</span>
-  <div class="subtext-laptop">
-    <span>
-      {{item.points}} points by
-      <a href="">{{item.user}}</a>
-    </span>
-    <span>
-      {{item.time_ago}}
-      <span> |
-        <a [routerLink]="['/item', item.id]">
-          <span *ngIf="item.comments_count !== 0">
-            {{item.comments_count}}
-            <span *ngIf="item.comments_count === 1">comment</span>
-            <span *ngIf="item.comments_count > 1">comments</span>
-          </span>
-          <span *ngIf="item.comments_count === 0">discuss</span>
-        </a>
+<div class="row">
+  <div class="col-12">
+    <span *ngIf="item.points">{{item.points}}</span>
+    <a *ngIf="item.user" href="{{item.user}}">{{item.user}}
+      <br>
+    </a>
+    <a class="title" [href]="item.url">
+      <span>
+        <img src="http://www.google.com/s2/favicons?domain_url=http%3A%2F%2F{{item.domain}}%2F" alt="">
+      </span>{{item.title}}
+    </a>
+    <br>
+    <small class="text-muted" *ngIf="item.domain">{{item.domain}} {{item.time_ago}}</small>
+    <a [routerLink]="['/item', item.id]">
+      <span *ngIf="item.comments_count !== 0">
+        {{item.comments_count}}
+        <span *ngIf="item.comments_count === 1">comment</span>
+        <span *ngIf="item.comments_count > 1">comments</span>
       </span>
-    </span>
-    <p class="subject" [innerHTML]="item.content"></p>
+      <span *ngIf="item.comments_count === 0">discuss</span>
+    </a>
   </div>
 </div>

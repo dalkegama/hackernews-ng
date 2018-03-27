@@ -1,9 +1,9 @@
 <div class="loading-section" *ngIf="!items">
   <!-- You can add a loading indicator here if you want to :) -->
 </div>
-<div *ngIf="items">
-  <ol start="{{ listStart }}">
-    <li *ngFor="let item of items" class="post">
+<div *ngIf="items"  class="col col-md-12">
+  <ol class="list-group" start="{{ listStart }}">
+    <li *ngFor="let item of items" class="list-group-item">
       <app-item class="item-block" [item]="item"></app-item>
     </li>
   </ol>
