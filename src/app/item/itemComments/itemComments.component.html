@@ -3,12 +3,6 @@
     <!-- You can add a loading indicator here if you want to :) -->
   </div>
   <div *ngIf="item" class="item">
-    <div class="mobile item-header">
-      <!-- Markup that shows only on mobile (to give the app a
-    responsive mobile feel). Same attributes as below,
-    nothing really new here (but refer to the source
-    file if you're interested) -->
-    </div>
     <div class="laptop" [class.item-header]="item.comments_count > 0 || item.type === 'job'" [class.head-margin]="item.text">
       <p>
         <a class="title" href="{{item.url}}">
@@ -37,6 +31,6 @@
       </div>
     </div>
     <p class="subject" [innerHTML]="item.content"></p>
-    <app-comment-tree [commentTree]="item.comment"></app-comment-tree>
+    <app-comment-tree [commentTree]="item.comments"></app-comment-tree>
   </div>
 </div>

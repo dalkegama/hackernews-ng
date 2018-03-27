@@ -25,6 +25,7 @@ export class ItemCommentsComponent implements OnInit {
       const itemID = +params['id'];
       this._hackerNewsApiService.fetchComments(itemID).subscribe(data => {
         this.item = data;
+        console.log(this.item);
       }, error => console.log('Could not load item' + itemID));
     });
   }
