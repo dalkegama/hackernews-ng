@@ -5,6 +5,7 @@
     <span class="time">{{comment.time_ago}}</span>
   </div>
   <div class="comment-tree">
+    {{comment}}
     <div [hidden]="collapse">
       <p class="comment-text" [innerHTML]="comment.content"></p>
       <ul class="subtree">

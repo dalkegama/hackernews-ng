@@ -16,11 +16,15 @@ import { ItemCommentsComponent } from './item/itemComments/itemComments.componen
 import { HackerNewsApiService } from './services/hackernews-api.service';
 import { DomainPipe } from './custom/domain.pipe';
 import { routing } from './routes.routing';
+import { CommentComponent } from './item/comment/comment.component';
+import { CommentTreeComponent } from './item/comment-tree/comment-tree.component';
 @NgModule({
   declarations: [
     AppComponent,
     DomainPipe,
     HeaderComponent,
+    CommentComponent,
+    CommentTreeComponent,
     ItemComponent,
     ItemCommentsComponent,
     StoriesComponent
